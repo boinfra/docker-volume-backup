@@ -144,5 +144,7 @@ if [ ! -z "$INFLUXDB_URL" ]; then
     --data-binary "$INFLUX_LINE"
 fi
 
+sh ./remove.sh
+
 info "Backup finished"
 echo "Will wait for next scheduled backup"

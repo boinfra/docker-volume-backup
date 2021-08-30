@@ -13,8 +13,11 @@ RUN sh get-docker.sh
 
 COPY ./src/entrypoint.sh /root/
 COPY ./src/backup.sh /root/
+COPY ./src/remove.sh /root/
 RUN chmod a+x /root/entrypoint.sh
 RUN chmod a+x /root/backup.sh
+RUN chmod a+x /root/backup.sh
+RUN chmod a+x /root/remove.sh
 
 WORKDIR /root
 CMD [ "/root/entrypoint.sh" ]
