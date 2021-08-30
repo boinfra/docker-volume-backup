@@ -20,4 +20,4 @@ jobs:
             - name: Build the Docker image
               run: docker build . --file Dockerfile --tag boinfra/docker-volume-backup:$(date +%s)
             - name: docker push
-              run: docker push boinfra/docker-volume-backup:$(date +%s)
+              run: docker push boinfra/docker-volume-backup
