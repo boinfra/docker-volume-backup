@@ -7,7 +7,7 @@ set -e
 cat <<EOF > env.sh
 BACKUP_SOURCES="${BACKUP_SOURCES:-/backup}"
 BACKUP_CRON_EXPRESSION="${BACKUP_CRON_EXPRESSION:-@daily}"
-DELETE_BACKUP_AGE="${DELETE_BACKUP_AGE:-7}
+DELETE_BACKUP_AGE=${DELETE_BACKUP_AGE:-7}
 AWS_S3_BUCKET_NAME="${AWS_S3_BUCKET_NAME:-}"
 AWS_GLACIER_VAULT_NAME="${AWS_GLACIER_VAULT_NAME:-}"
 AWS_EXTRA_ARGS="${AWS_EXTRA_ARGS:-}"
@@ -44,7 +44,6 @@ fi
 # Add our cron entry, and direct stdout & stderr to Docker commands stdout
 echo "Installing cron.d entry: docker-volume-backup"
 echo "$BACKUP_CRON_EXPRESSION root /root/backup.sh > /proc/1/fd/1 2>&1" > /etc/cron.d/docker-volume-backup
-echo "$BACKUP_CRON_EXPRESSION root /root/remove.sh > /proc/1/fd/1 2>&1" > /etc/cron.d/docker-volume-backup
 
 # Let cron take the wheel
 echo "Starting cron in foreground with expression: $BACKUP_CRON_EXPRESSION"
