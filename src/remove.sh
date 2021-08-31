@@ -9,9 +9,9 @@ function info {
   echo -e "\n$bold[INFO] $1$reset\n"
 }
 
-info "Remove starting"
 
-if [ -d "$BACKUP_ARCHIVE" ]; then
-  info "$BACKUP_ARCHIVE"* -mtime +$DELETE_BACKUP_AGE -exec rm {} \;
+if [ -d "$BACKUP_ARCHIVE" ] && [ $DELETE_BACKUP_AGE != -1 ]; then
+  info "Remove starting"
   find "$BACKUP_ARCHIVE"* -mtime +$DELETE_BACKUP_AGE -exec rm {} \;
+  info "Remove finished"
 fi

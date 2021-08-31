@@ -196,7 +196,7 @@ Variable | Default | Notes
 --- | --- | ---
 `BACKUP_SOURCES` | `/backup` | Where to read data from. This can be a space-separated list if you need to back up multiple paths, when mounting multiple volumes for example. On the other hand, you can also just mount multiple volumes under `/backup` to have all of them backed up.
 `BACKUP_CRON_EXPRESSION` | `@daily` | Standard debian-flavored `cron` expression for when the backup should run. Use e.g. `0 4 * * *` to back up at 4 AM every night. See the [man page](http://man7.org/linux/man-pages/man8/cron.8.html) or [crontab.guru](https://crontab.guru/) for more.
-`DELETE_BACKUP_AGE` | 7 | Minimum age in days of backup files that will be removed each time the backup script runs
+`DELETE_BACKUP_AGE` | 7 | Minimum age in days of backup files that will be removed each time the backup script runs (-1 if you don't want backups to be deleted)
 `BACKUP_FILENAME` | `backup-%Y-%m-%dT%H-%M-%S.tar.gz` | File name template for the backup file. Is passed through `date` for formatting. See the [man page](http://man7.org/linux/man-pages/man1/date.1.html) for more.
 `BACKUP_ARCHIVE` | `/archive` | When this path is available within the container (i.e. you've mounted a Docker volume there), a finished backup file will get archived there after each run.
 `BACKUP_UID` | `root (0)` | After backup file has been moved to archive location the file user ownership is changed to this UID.
